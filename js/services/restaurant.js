@@ -1,18 +1,34 @@
 
 app.factory('foursquareService', ['$http','$q',  function($http) {
-     var clientId = 'XP4VP0ASW5BTRAVCYEEMCQQFVIQGO1FPAI5ZR2GVEVXHVKOL';
-     var clientSecret = 'C4SH5M4HHKWABXYTSBXZZXKDA4S120G1ZWTCED5WECPEWQXP';
-    
+    var clientId = 'XP4VP0ASW5BTRAVCYEEMCQQFVIQGO1FPAI5ZR2GVEVXHVKOL';
+    var clientSecret = 'C4SH5M4HHKWABXYTSBXZZXKDA4S120G1ZWTCED5WECPEWQXP';
+
+
+
        var factory = {
-            getData: function (selectedType) {  
-                console.log('service'+ selectedType);
+            getData: function (selectedLocation, lat, lng, selectedType, selectedPrice, selectedQuery) {  
+                // console.log('service '+ selectedLocation +" " +  selectedType.categoryId +" "+ selectedPrice.priceValue);
+                var parameters = {query: selectedQuery,
+                        limit:7, 
+                        client_id: clientId, 
+                        client_secret: clientSecret, 
+                        price: selectedPrice.priceValue, 
+                        v: 20140806, 
+                        callback: 'JSON_CALLBACK'
+                    };
+                    if (selectedLocation ===""){
+                         parameters.ll= lat +',' + lng;
+                    }
+                    else{
+                        parameters.near= selectedLocation;
+                    }
+
                 var data = $http({
                     url: 'https://api.foursquare.com/v2/venues/explore',
                     method: 'jsonp',
-                    params: {categoryId: selectedType.categoryId, limit:7, near: '11238', client_id: clientId, client_secret: clientSecret, price: 2, v: 20140806, callback: 'JSON_CALLBACK'}
+                    params: parameters
                    });
-                
-                console.log('data'+ data);
+
                 return data;
             }
        };       
@@ -20,22 +36,7 @@ app.factory('foursquareService', ['$http','$q',  function($http) {
 }]);
 
 
-// app.factory('foursquareService', function($http) {
-//     var clientId = 'XP4VP0ASW5BTRAVCYEEMCQQFVIQGO1FPAI5ZR2GVEVXHVKOL';
-//     var clientSecret = 'C4SH5M4HHKWABXYTSBXZZXKDA4S120G1ZWTCED5WECPEWQXP';
 
-//     return $http({
-//         url: 'https://api.foursquare.com/v2/venues/explore',
-//         method: 'jsonp',
-//         params: {limit:7, near: 'New%York,NY', client_id: clientId, client_secret: clientSecret, query: selectedType, price: 2, v: 20140806, callback: 'JSON_CALLBACK'}
-//         // data: 'limit=7&near=union%20square,NY&client_id='+clientId+'&client_secret='+clientSecret+'&query=bar&price=2&v=20140806'
-
-//     }).success(function(data) {
-//          // console.log(data.response.groups);
-//         return data;
-//     });
-      
-// });
 
 
 
