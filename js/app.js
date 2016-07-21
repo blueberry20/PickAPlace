@@ -1,1 +1,1 @@
-var app = angular.module('RestaurantApp', ['ngGeolocation']);
+var app = angular.module('RestaurantApp', ['ngGeolocation', 'ngAnimate']);

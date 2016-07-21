@@ -7,12 +7,13 @@ app.factory('foursquareService', ['$http','$q',  function($http) {
 
        var factory = {
             getData: function (selectedLocation, lat, lng, selectedType, selectedPrice, selectedQuery) {  
-                // console.log('service '+ selectedLocation +" " +  selectedType.categoryId +" "+ selectedPrice.priceValue);
+               
                 var parameters = {query: selectedQuery,
                         limit:7, 
                         client_id: clientId, 
                         client_secret: clientSecret, 
                         price: selectedPrice.priceValue, 
+                        venuePhotos: 1,
                         v: 20140806, 
                         callback: 'JSON_CALLBACK'
                     };
@@ -22,6 +23,7 @@ app.factory('foursquareService', ['$http','$q',  function($http) {
                     else{
                         parameters.near= selectedLocation;
                     }
+
 
                 var data = $http({
                     url: 'https://api.foursquare.com/v2/venues/explore',

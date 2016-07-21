@@ -6,7 +6,7 @@ app.controller('MainController', ['$scope', 'foursquareService', 'locationServic
   	$scope.selectedType = "";
   	$scope.selectedPrice = "";
   	$scope.selectedQuery = "restaurant";
-  	$scope.placesCount = 0;
+  	$scope.placesCount;
   	$scope.lat = "";
   	$scope.lng = "";
   	
@@ -14,50 +14,57 @@ app.controller('MainController', ['$scope', 'foursquareService', 'locationServic
 
   	$scope.getData = function() {
   		if ($scope.selectedLocation === ""){
-  			// console.log($scope.selectedLocation);
-  			// console.log($scope.lat + ", " + $scope.lng);
+
   			$scope.getLocationData();
   		}
   		else {
-  			// console.log('selectedLocation not empty');
-  			// console.log($scope.selectedLocation);
   			$scope.getFoursquareData();
 
   		}
   		
     };
 
-    // app.$inject = ['$scope', 'foursquareService'];
+
+  	$scope.getLocationData = function(){
+          locationService.getData().then(function(response) {            
+              $scope.lat = response.data.location.lat;
+              $scope.lng= response.data.location.lng;
+
+              $scope.getFoursquareData();
+
+          }, function(result) {
+              alert("Error: No location returned");
+          });
+  	};
+
+  	$scope.getFoursquareData = function(){
+  		foursquareService.getData($scope.selectedLocation, $scope.lat, $scope.lng, $scope.selectedType, $scope.selectedPrice, $scope.selectedQuery).then(function(data) {
+              
+            if (data.data.response.groups) {
+              $scope.places = data.data.response.groups[0].items;
+              console.log($scope.places);
+              $scope.placesCount = $scope.places.length;
+            }
+            else {
+              $scope.placesCount = 0;
+            }
+
+          }, function(result) {
+              alert("Error: No data returned");
+          });
+  	};
 
 
-	$scope.getLocationData = function(){
-        locationService.getData().then(function(response) {            
-            $scope.lat = response.data.location.lat;
-            $scope.lng= response.data.location.lng;
-
-            $scope.getFoursquareData();
-
-        }, function(result) {
-            alert("Error: No location returned");
-        });
-	};
-
-	$scope.getFoursquareData = function(){
-		foursquareService.getData($scope.selectedLocation, $scope.lat, $scope.lng, $scope.selectedType, $scope.selectedPrice, $scope.selectedQuery).then(function(data) {
-            $scope.places = data.data.response.groups[0].items;
-            console.log($scope.places);
-            $scope.placesCount = $scope.places.length;
-        }, function(result) {
-            alert("Error: No data returned");
-        });
-	};
+    $scope.buildVenueThumbnail = function (photo) {
+ 
+        return photo.items[0].prefix + '200x200' + photo.items[0].suffix;
+    };
 
 
 
-
-	$scope.isEmptyObject = function(object){
-		return object == null || object == 'undefined';
-	};
+  	$scope.isEmptyObject = function(object){
+  		return object == null || object == 'undefined';
+  	};
 
 	$scope.getLocationData();
 }]);
