@@ -5,21 +5,22 @@ $mainFont: 'Source Sans Pro';
 html, body {
 	height: 100%;
 }
+
 #mainWrapper {
-  display: -webkit-flex;
-  display: flex; 
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: flex-start;
-  min-height: 100%;
- /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ad3d3+0,86f9a9+100 */
-background: #2ad3d3; /* Old browsers */
-background: -moz-linear-gradient(left,  #2ad3d3 0%, #86f9a9 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(left,  #2ad3d3 0%,#86f9a9 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to right,  #2ad3d3 0%,#86f9a9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ad3d3', endColorstr='#86f9a9',GradientType=1 ); /* IE6-9 */
+	display: -webkit-flex;
+	display: flex; 
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: flex-start;
+	min-height: 100%;
+	 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2ad3d3+0,86f9a9+100 */
+	background: #2ad3d3; /* Old browsers */
+	background: -moz-linear-gradient(left,  #2ad3d3 0%, #86f9a9 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #2ad3d3 0%,#86f9a9 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #2ad3d3 0%,#86f9a9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ad3d3', endColorstr='#86f9a9',GradientType=1 ); /* IE6-9 */
 }
 
 .container {
@@ -99,11 +100,6 @@ h3 {
 }
 
 
-// .noResults {
-// 	display: none;
-// }
-
-
 .resultCard {
 	background-color: #fff;
 	width: 90%;
@@ -146,7 +142,7 @@ h3 {
 	background-color: $primeColor;
 	height:2em;
 	color:#fff;
-	width:200px;
+	width:160px;
 	display:block;
 	line-height:2em;
 	text-decoration: none;
@@ -161,9 +157,8 @@ h3 {
 	}
 }
 
-.ng-hide-add         { 
+.ng-hide-add  { 
 	opacity:0;
-
 	transition: all linear 0.5s;
 }
 
@@ -205,12 +200,6 @@ h3 {
 	transition: all linear 0.5s;
 	opacity:1;
 }
-
-// .ng-hide:not(.ng-hide-animate) {
-//     display: none !important;
-//     opacity:0;
-
-// }
 
 
 

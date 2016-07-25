@@ -12,7 +12,7 @@ app.factory('locationService', ['$http','$q',  function($http) {
                 return data;
             }
        };       
-        return factory;
+      return factory;
 }]);
 
 

@@ -11,25 +11,22 @@ app.controller('MainController', ['$scope', 'foursquareService', 'locationServic
   	$scope.lng = "";
   	
 
-
+    //first time load or if location is not entered by user, get location using google maps geolocation
   	$scope.getData = function() {
   		if ($scope.selectedLocation === ""){
-
   			$scope.getLocationData();
   		}
   		else {
   			$scope.getFoursquareData();
-
   		}
   		
     };
 
-
+    //call google maps geolocation api and upon getting it, call foursquare api
   	$scope.getLocationData = function(){
           locationService.getData().then(function(response) {            
               $scope.lat = response.data.location.lat;
               $scope.lng= response.data.location.lng;
-
               $scope.getFoursquareData();
 
           }, function(result) {
@@ -37,12 +34,13 @@ app.controller('MainController', ['$scope', 'foursquareService', 'locationServic
           });
   	};
 
+    //call foursquare api
   	$scope.getFoursquareData = function(){
   		foursquareService.getData($scope.selectedLocation, $scope.lat, $scope.lng, $scope.selectedType, $scope.selectedPrice, $scope.selectedQuery).then(function(data) {
               
             if (data.data.response.groups) {
               $scope.places = data.data.response.groups[0].items;
-              console.log($scope.places);
+              // console.log($scope.places);
               $scope.placesCount = $scope.places.length;
             }
             else {
@@ -56,17 +54,17 @@ app.controller('MainController', ['$scope', 'foursquareService', 'locationServic
 
 
     $scope.buildVenueThumbnail = function (photo) {
- 
         return photo.items[0].prefix + '200x200' + photo.items[0].suffix;
     };
 
 
-
+    //check if the object is empty, we use to check if menu link is not empty
   	$scope.isEmptyObject = function(object){
   		return object == null || object == 'undefined';
   	};
 
-	$scope.getLocationData();
+	  $scope.getLocationData();
+
 }]);
 
 

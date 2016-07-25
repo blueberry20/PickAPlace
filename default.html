@@ -6,10 +6,9 @@
     <link href='https://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Mukta+Vaani:400,300' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-  <!--   <link href="css/main.css" rel="stylesheet" /> -->
-  <link href="css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 
-        <!-- Include the AngularJS library -->
+    <!-- Include the AngularJS library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.4/angular.min.js"></script>
     <script src="bower_components/ngGeolocation/ngGeolocation.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.4/angular-animate.min.js"></script>
@@ -22,6 +21,7 @@
             <h2>Make the following selections and you'll get 7 top suggestions to go</h2>
         </div>
 
+        <!--=============Enter criteria==============-->
          <div class="row">
             <div id="searchWrapper">
                 <div>
@@ -45,6 +45,7 @@
             </div>
         </div> 
 
+        <!--=============No results==============-->
         <div class="row">
             <div class="noResults resultsWrapper" data-ng-show="placesCount == 0">
                 <div class="resultCard">
@@ -53,10 +54,11 @@
             </div>
          </div>
 
-       <!--=============Displaying results==============-->
+        <!--=============Displaying results==============-->
         <div class="row">
-             <div class="resultsWrapper" data-ng-show="placesCount > 0">
-                  <div class="resultCard" data-ng-repeat="place in places">
+            <div class="resultsWrapper" data-ng-show="placesCount > 0">
+
+                <div class="resultCard" data-ng-repeat="place in places">
                     <div class="leftSide">
                         <a href="{{place.venue.url}}" target="_blank"><img data-ng-src="{{buildVenueThumbnail(place.venue.photos.groups[0])}}" class="placePhoto" /></a>
                     </div>
@@ -66,13 +68,12 @@
                       <p data-ng-repeat="category in place.venue.categories">Category: {{category.name}}</p>
                       <p>Address: {{place.venue.location.formattedAddress[0]}}, {{place.venue.location.formattedAddress[1]}}</p>
                       <p>Rating: {{place.venue.rating}}</p>
-                      <a class="smallButton" data-ng-show="!isEmptyObject({{place.venue.menu}})" target="_blank" href={{place.venue.menu.url}}>View Menu</a>
-                      
+                      <a class="smallButton" data-ng-show="!isEmptyObject({{place.venue.menu}})" target="_blank" href={{place.venue.menu.url}}>View Menu</a> 
                      </div>
 
-                  </div>   
-              </div>
-          </div> 
+                </div>   
+            </div>
+        </div> 
 
 
     </div>
@@ -85,11 +86,8 @@
     <script src="js/controllers/MainController.js"></script>
 
     <!-- Services -->
-  <script src="js/services/restaurant.js"></script>
-  <script src="js/services/location.js"></script>
-    <!-- Directives -->
-
-
+    <script src="js/services/restaurant.js"></script>
+    <script src="js/services/location.js"></script>
 
 
   </body>
