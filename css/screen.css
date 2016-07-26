@@ -37,12 +37,12 @@ h1, h4 {
   font-family: 'Julius Sans One'; }
 
 h2 {
-  font-size: 1.6em;
-  font-weight: 300;
-  margin: 1em; }
+  font-size: 1em;
+  margin: 1em;
+  color: #555; }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.8em;
   font-weight: 300; }
 
 .row {
@@ -53,7 +53,6 @@ h3 {
   width: 90%;
   text-align: left;
   margin: 0 auto;
-  background-color: #fff;
   padding: 1em; }
 
 #searchWrapper div {
@@ -67,18 +66,26 @@ h3 {
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
-  padding: 5px;
-  font-size: 1em; }
+  padding: 1em;
+  font-size: 1em;
+  border: 1px solid #1da4a4;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
 
 #searchWrapper button {
   margin: 1.2em 0;
-  background-color: #50C3C9;
-  border: none;
+  background-color: transparent;
+  border: 1px solid #000;
   text-transform: uppercase;
+  font-weight: 300;
   font-size: 1.2em;
-  color: #fff; }
-  #searchWrapper button:hover {
-    background-color: #72C3C7; }
+  color: #000;
+  width: 300px;
+  height: auto;
+  transition: all linear 0.5s; }
+  #searchWrapper button:hover, #searchWrapper button:focus, #searchWrapper button:active {
+    background-color: rgba(0, 0, 0, 0.1); }
 
 .resultCard {
   background-color: #fff;
@@ -111,10 +118,10 @@ h3 {
   margin: 1em auto; }
 
 .smallButton {
-  background-color: #50C3C9;
+  border: 1px solid #1da4a4;
   height: 2em;
-  color: #fff;
-  width: 160px;
+  color: #1da4a4;
+  width: 150px;
   display: block;
   line-height: 2em;
   text-decoration: none;
@@ -154,5 +161,43 @@ h3 {
 .resultsWrapper {
   transition: all linear 0.5s;
   opacity: 1; }
+
+@media (max-width: 1200px) {
+  #searchWrapper div {
+    width: 80%; }
+
+  h3 {
+    font-size: 1.4em; } }
+@media (max-width: 850px) {
+  #searchWrapper div {
+    width: 100%; }
+
+  .leftSide {
+    width: 40%; }
+
+  .rightSide {
+    width: 60%; } }
+@media (max-width: 650px) {
+  h1 {
+    font-size: 2em; }
+
+  #searchWrapper {
+    width: 100%;
+    padding: 0 1em; }
+
+  .resultCard {
+    flex-direction: column;
+    padding: 1em;
+    margin: 1em auto; }
+
+  .leftSide, .rightSide {
+    width: 100%; }
+
+  .leftSide {
+    padding: 0 0 1em;
+    justify-content: center; }
+
+  #searchWrapper button {
+    width: 100%; } }
 
 /*# sourceMappingURL=screen.css.map */

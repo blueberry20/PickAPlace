@@ -1,4 +1,4 @@
-$primeColor: #50C3C9;
+$primeColor: #1da4a4;
 $hoverColor: #72C3C7;
 $mainFont: 'Source Sans Pro';
 
@@ -42,14 +42,14 @@ h1, h4 {
 }
 
 h2 {
-	font-size:1.6em;
+	font-size:1em;
 	// font-family: 'Mukta Vaani';
-	font-weight: 300;
 	margin:1em;
+	color: #555;
 }
 
 h3 {
-	font-size:1.3em;
+	font-size:1.8em;
 	// font-family: 'Mukta Vaani';
 	font-weight: 300;
 }
@@ -64,7 +64,6 @@ h3 {
     width: 90%;
     text-align: left;
     margin: 0 auto;
-    background-color: #fff;
     padding:1em;
 
 }
@@ -82,20 +81,28 @@ h3 {
 		-webkit-box-shadow: none !important;
 		-moz-box-shadow: none !important;
 		box-shadow: none !important;
-		padding:5px;
+		padding:1em;
 		font-size:1em;
+		border:1px solid $primeColor;
+		border-radius:0;
+		-webkit-appearance: none;
+    	-moz-appearance: none;
 	}
 }
 
 #searchWrapper button {
 	margin:1.2em 0;
-	background-color: $primeColor;
-	border:none;
+	background-color: transparent;
+	border:1px solid #000;
 	text-transform: uppercase;
+	font-weight:300;
 	font-size: 1.2em;
-	color:#fff;
-	&:hover {
-		background-color: $hoverColor;
+	color:#000;
+	width:300px;
+	height:auto;
+	transition: all linear 0.5s;
+	&:hover, &:focus, &:active {
+		background-color: rgba(0,0,0, 0.1);
 	}
 }
 
@@ -139,10 +146,10 @@ h3 {
 }
 
 .smallButton {
-	background-color: $primeColor;
+	border:1px solid $primeColor;
 	height:2em;
-	color:#fff;
-	width:160px;
+	color:$primeColor;
+	width:150px;
 	display:block;
 	line-height:2em;
 	text-decoration: none;
@@ -199,6 +206,55 @@ h3 {
 .resultsWrapper {
 	transition: all linear 0.5s;
 	opacity:1;
+}
+
+@media (max-width:1200px) {
+	#searchWrapper div {
+    	width: 80%;
+	}
+	h3 {
+		font-size:1.4em;
+	}
+}
+
+@media (max-width:850px) {
+	#searchWrapper div {
+    	width: 100%;
+	}
+
+	.leftSide{
+		width:40%;
+	}
+	.rightSide{
+		width:60%;
+	}
+
+}
+
+
+@media (max-width:650px){
+	h1{
+		font-size: 2em;
+	}
+	#searchWrapper {
+    	width: 100%;
+	    padding: 0 1em;
+	}
+	.resultCard {
+		flex-direction:column;
+		padding:1em;
+		margin: 1em auto;
+	}
+	.leftSide, .rightSide {
+		width:100%;
+	}
+	.leftSide{
+		padding: 0 0 1em;
+		justify-content:center;
+	}
+	#searchWrapper button {
+		width:100%;
+	}
 }
 
 
